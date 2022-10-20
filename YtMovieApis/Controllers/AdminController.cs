@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using YtMovieApis.Models.DTO;
 
 namespace YtMovieApis.Controllers
 {
@@ -11,7 +12,10 @@ namespace YtMovieApis.Controllers
     {
         public IActionResult GetData()
         {
-            return Ok("Data from admin controller");
+            var status = new Status();
+            status.StatusCode = 1;
+            status.Message = "Data from admin controller";
+            return Ok(status);
         }
     }
 }
