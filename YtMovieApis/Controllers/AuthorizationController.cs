@@ -95,7 +95,7 @@ namespace YtMovieApis.Controllers
                     {
                         Usename = user.UserName,
                         RefreshToken = refreshToken,
-                        RefreshTokenExpiry = DateTime.Now.AddDays(7)
+                        RefreshTokenExpiry = DateTime.Now.AddDays(1)
                     };
                     _context.TokenInfo.Add(info);
                 }
@@ -103,7 +103,7 @@ namespace YtMovieApis.Controllers
                 else
                 {
                     tokenInfo.RefreshToken = refreshToken;
-                    tokenInfo.RefreshTokenExpiry = DateTime.Now.AddDays(7);
+                    tokenInfo.RefreshTokenExpiry = DateTime.Now.AddDays(1);
                 }
                 try
                 {

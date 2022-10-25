@@ -49,14 +49,14 @@ namespace YtMovieApis.Repositories.Domain
         public TokenResponse GetToken(IEnumerable<Claim> claim)
         {
             var authSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JWT:Secret"]));
-
             var token = new JwtSecurityToken(
                 issuer: _configuration["JWT:ValidIssuer"],
                 audience: _configuration["JWT:ValidAudience"],
-                expires: DateTime.Now.AddDays(7),
+                expires: DateTime.Now.AddDays(1),
                 claims: claim,
                 signingCredentials: new SigningCredentials(authSigningKey, SecurityAlgorithms.HmacSha256)
                 );
+           
             string tokenString = new JwtSecurityTokenHandler().WriteToken(token);
 
             return new TokenResponse { TokenString = tokenString, ValidTo = token.ValidTo };
